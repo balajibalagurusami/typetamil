@@ -24,27 +24,25 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        button {
-            padding: 10px 20px;
+        .output {
+            width: 80%;
+            height: 150px;
+            margin-top: 20px;
+            padding: 10px;
             font-size: 16px;
-            color: white;
-            background-color: #007bff;
-            border: none;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
+            background-color: #fff;
+            word-wrap: break-word;
+            white-space: pre-wrap;
         }
     </style>
 </head>
 <body>
     <h1>Tanglish to Tamil Converter</h1>
-    <textarea id="tanglishInput" placeholder="Type Tanglish text here..."></textarea>
-    <br>
-    <button onclick="convertToTamil()">Convert to Tamil</button>
+    <textarea id="tanglishInput" placeholder="Type Tanglish text here..." oninput="convertToTamil()"></textarea>
     <h2>Converted Tamil Text:</h2>
-    <textarea id="tamilOutput" readonly></textarea>
+    <div id="tamilOutput" class="output"></div>
 
     <script>
         const tanglishToTamilMap = {
@@ -65,7 +63,8 @@
             'cha': 'ச',
             'nja': 'ஞ',
             'ta': 'ட',
-            'na': 'ண',
+            'Na': 'ண',
+            'thna': 'ந',
             'tha': 'த',
             'pa': 'ப',
             'ma': 'ம',
@@ -104,7 +103,7 @@
                 output += tamilWord + ' ';
             });
 
-            document.getElementById('tamilOutput').value = output.trim();
+            document.getElementById('tamilOutput').innerText = output.trim();
         }
     </script>
 </body>
