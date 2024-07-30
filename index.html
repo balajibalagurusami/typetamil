@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanglish to Tamil Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 80%;
+            height: 150px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tanglish to Tamil Converter</h1>
+    <textarea id="tanglishInput" placeholder="Type Tanglish text here..."></textarea>
+    <br>
+    <button onclick="convertToTamil()">Convert to Tamil</button>
+    <h2>Converted Tamil Text:</h2>
+    <textarea id="tamilOutput" readonly></textarea>
+
+    <script>
+        const tanglishToTamilMap = {
+            'a': 'அ',
+            'aa': 'ஆ',
+            'i': 'இ',
+            'ii': 'ஈ',
+            'u': 'உ',
+            'uu': 'ஊ',
+            'e': 'எ',
+            'ee': 'ஏ',
+            'ai': 'ஐ',
+            'o': 'ஒ',
+            'oo': 'ஓ',
+            'au': 'ஔ',
+            'ka': 'க',
+            'nga': 'ங',
+            'cha': 'ச',
+            'nja': 'ஞ',
+            'ta': 'ட',
+            'na': 'ண',
+            'tha': 'த',
+            'pa': 'ப',
+            'ma': 'ம',
+            'ya': 'ய',
+            'ra': 'ர',
+            'la': 'ல',
+            'va': 'வ',
+            'zha': 'ழ',
+            'La': 'ள',
+            'Ra': 'ற',
+            'na': 'ன',
+            'sha': 'ஷ',
+            'sa': 'ஸ',
+            'ha': 'ஹ'
+        };
+
+        function convertToTamil() {
+            const input = document.getElementById('tanglishInput').value;
+            let output = '';
+
+            const words = input.split(' ');
+            words.forEach(word => {
+                let tamilWord = '';
+                let buffer = '';
+
+                for (let i = 0; i < word.length; i++) {
+                    buffer += word[i];
+                    if (tanglishToTamilMap[buffer]) {
+                        tamilWord += tanglishToTamilMap[buffer];
+                        buffer = '';
+                    }
+                }
+                if (buffer) {
+                    tamilWord += buffer;
+                }
+                output += tamilWord + ' ';
+            });
+
+            document.getElementById('tamilOutput').value = output.trim();
+        }
+    </script>
+</body>
+</html>
